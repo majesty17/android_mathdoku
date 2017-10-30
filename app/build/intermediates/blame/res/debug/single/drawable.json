@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_solve.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\menu_solve.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_options.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\menu_options.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_saveload.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\menu_saveload.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_help.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\menu_help.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_new.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\menu_new.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\about.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\about.png"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon.png",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\drawable\\icon.png"
+    }
+]

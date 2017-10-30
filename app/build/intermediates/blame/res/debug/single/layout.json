@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\aboutview.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\aboutview.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\changeview.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\changeview.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\savedgamesaveitem.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\savedgamesaveitem.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\savedgameitem.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\savedgameitem.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\main.xml"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\anim-land\\selectorzoomout.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\anim-land\\selectorzoomout.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\anim-land\\selectorzoomin.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\anim-land\\selectorzoomin.xml"
+    }
+]

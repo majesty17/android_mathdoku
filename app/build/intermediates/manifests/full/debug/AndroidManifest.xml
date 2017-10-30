@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mathdoku"
+    android:installLocation="auto"
+    android:versionCode="72"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" >
+    </supports-screens>
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/application_name" >
+        <activity
+            android:name="com.mathdoku.MathDoku"
+            android:label="@string/application_name"
+            android:theme="@android:style/Theme.Holo.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mathdoku.OptionsActivity"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name="com.mathdoku.SavedGameList"
+            android:theme="@android:style/Theme.Holo.Light" />
+    </application>
+
+</manifest>

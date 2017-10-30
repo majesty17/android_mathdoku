@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="application_name">MathDoku</string>
+	<!-- The label of the buttons that close dialogs. -->
+	<string name="close">关闭</string>
+	<!-- A text that informs the player that a certain amount of text is in English. -->
+	<string name="in_english">(in English)</string>
+	<!-- The visibility of the texts above. Should be 2 in English and 0 in all non-English translations. -->
+	<integer name="in_english_visibility">2</integer>
+    <string name="factors">因子</string>
+	<!-- The different grid sizes with their difficulties. -->
+	<string name="grid_size_4">4x4 (简单)</string>
+	<string name="grid_size_5">5x5 (中等)</string>
+	<string name="grid_size_6">6x6 (难)</string>
+	<string name="grid_size_7">7x7 (较难)</string>
+	<string name="grid_size_8">8x8 (极难)</string>
+	<string name="grid_size_9">9x9 (终极)</string>
+	<!-- The menu item that allows the player to start a new game. -->
+	<string name="menu_newgame">新游戏</string>
+	<!-- The menu item that allows the player to load and save the game states. -->
+	<string name="menu_saveload">读取/保存</string>
+	<!-- The sub-menu item to check user entries against the solution. -->
+	<string name="menu_checkprogress">Check Progress</string>
+	<!-- The menu item that allows the player to navigate to the options screen. -->
+	<string name="menu_options">设置</string>
+	<!-- The menu item that allows the player to navigate to the help screen. -->
+	<string name="menu_help">帮助</string>
+	<!-- The menu item that allows the player to navigate to the changelog screen -->
+	<string name="menu_changes">更新日志</string>
+	<!-- The message displayed on the screen to explain the player that (s)he has to press the "Menu" button on the device. -->
+	<string name="press_menu_button_message">Press the \"Menu\" button.</string>
+	<!-- The button in the save game screen that allows the player to save the state of the game (s)he's currently playing. -->
+	<string name="save_game_screen_save_current_game">保存当前的游戏</string>
+	<!-- The button in the save game screen that allows the player to load a previously saved game state. -->
+	<string name="save_game_screen_load_game">读取游戏</string>
+	<!-- The button in the save game screen that allows the player to delete a previously saved game state. -->
+	<string name="save_game_screen_delete_game">删除游戏</string>
+	<!-- The confirmation message that shows up when a delete button is pressed, plus the associated title and button labels. -->
+	<string name="save_game_screen_delete_game_confirmation_message">确定删除这个游戏吗？</string>
+	<string name="save_game_screen_delete_game_confirmation_title">删除以保存的游戏？</string>
+	<string name="save_game_screen_delete_game_negative_button_label">不，请保存</string>
+	<string name="save_game_screen_delete_game_positive_button_label">是的，删除</string>
+	<!-- The preferences category title for options relating to how the puzzle is displayed. -->
+	<string name="options_group_display">显示</string>
+	<!-- The preferences category title for audio options. -->
+	<string name="options_group_sound">声音</string>
+	<!-- The preferences category title for options to assist the user solve the puzzle. -->
+	<string name="options_group_assistance">辅助</string>
+	<!-- The preferences category title for options related to puzzle generation. -->
+	<string name="options_group_puzzle">谜题生成</string>
+	<!-- The title and summary of the "alternate theme" option. This option alters the theme used to display the puzzleboard. -->
+	<string name="option_alternate_theme_title">Alternate theme</string>
+	<string name="option_alternate_theme_summary">Use an alternative theme for the grid</string>
+	<!-- The title and summary of the "3x3 maybe" option. This option controls whether maybe numbers are displayed in 3x3 grid or straight line. -->
+	<string name="option_maybe_layout_title">3x3显示候选数</string>
+	<string name="option_maybe_layout_summary">使用3x3的网格显示候选数</string>
+	<!-- The title and summary of the "hide operator" option. This option controls whether the mathematical operation signs (+x/-) are shown. -->
+	<string name="option_hide_operators_title">隐藏运算符</string>
+	<string name="option_hide_operators_summary">隐藏+, -, x, /等运算符\n(新游戏生效)</string>
+    <!-- What to do with maybes -->
+    <string name="option_invalid_maybes_title">候选数辅助</string>
+	<string name="option_invalid_maybes_summary">自动标记、去除错误的候选数</string>
+	<!-- The title and summary of the "hide selector" option. This option auto-shows the digit buttons when the player selects a cell, and auto-hides those buttons when the player deselects a cell. -->
+	<string name="option_hide_selector_title">自动隐藏数字按钮</string>
+	<string name="option_hide_selector_summary">数字按钮按下后自动隐藏</string>
+	<!-- The title and summary of the "bad maths" option. This option highlights cages with incorrect maths. -->
+	<string name="option_mark_bad_maths_title">标记错误的运算</string>
+	<string name="option_mark_bad_maths_summary">错误运算高亮边框显示</string>
+	<!-- This option highlights cells with digits already in the row or column. -->
+	<string name="option_mark_duplicates_title">标记重复</string>
+	<string name="option_mark_duplicates_summary">行或列里重复数字高亮显示</string>
+	<!-- The title and summary of the "sound effects" option. -->
+	<string name="option_sound_effects_title">音效</string>
+	<string name="option_sound_effects_summary">打开音效</string>
+	<!-- The title and summary of the "wake lock" option. This option highlights cells with digits already in the row or column. -->
+	<string name="option_wake_lock_title">屏幕常亮</string>
+	<string name="option_wake_lock_summary">玩的时候防止屏幕自动熄灭</string>
+	<!-- The text on the all button in the main UI. -->
+	<string name="main_ui_all">所有</string>
+	<!-- The text on the clear button in the main UI. -->
+	<string name="main_ui_clear">清除</string>
+	<!-- The message that appears when the player has solved the puzzle. -->
+	<string name="main_ui_solved_messsage">已解决!</string>
+	<!-- The message that appears when the player reveals a cell. -->
+	<string name="main_ui_cheat_messsage">作弊啦! :P</string>
+	<!-- The message displayed on the screen when building a new puzzle, along with the associated title. -->
+ 	<string name="main_ui_building_puzzle_message">请稍等...</string>
+	<string name="main_ui_building_puzzle_title">创建谜题中</string>
+	<!-- The context menu item that allows the user to fill in the "Maybe"s in the cage. -->
+	<string name="context_menu_use_cage_maybes">Use cage \"Maybe\"s</string>
+	<!-- The context menu item that allows the user to reveal a cell. -->
+	<string name="context_menu_reveal_cell">显示答案</string>
+	<!-- The context menu item that allows the user to clear all of the cells in the cage. -->
+	<string name="context_menu_clear_cage_cells">清除格子</string>
+	<!-- The context menu item that allows the user to clear the entire grid. -->
+	<string name="context_menu_clear_grid">游戏重置</string>
+	<!-- The context menu to show the completed grid. -->
+	<string name="context_menu_show_solution">显示所有答案</string>
+	<string name="context_menu_populate_maybes">显示所有候选数</string>
+	<string name="context_menu_show_factors">显示因子</string>
+	<!-- The confirmation message that shows up when the clear grid context menu item is selected, plus the associated title and button labels. -->
+	<string name="context_menu_clear_grid_confirmation_message">确定重置吗?</string>
+	<string name="context_menu_clear_grid_confirmation_title">请确定</string>
+	<string name="context_menu_clear_grid_negative_button_label">不</string>
+	<string name="context_menu_clear_grid_positive_button_label">是的，我想重来</string>
+	<!-- The title of the changelog screen. -->
+	<string name="changelog_title">Changelog</string>
+	<!-- The title of the bugs and features part of the changelog screen. -->
+	<string name="changelog_bugs_features_title">Bugs and features</string>
+	<!-- The text of the bugs and features part of the changelog screen. -->
+    <string name="changelog_bugs_features">Please report any issues or feature requests on the project page:\n\nhttp://github.com/ianmills/mathdoku</string>
+	<!-- The first line in the help screen. -->
+	<string name="help_leadin">Thanks for installing MathDoku for Android.</string>
+	<!-- The version title in the help screen. -->
+	<string name="help_version">Version</string>
+	<!-- The license title in the help screen. -->
+	<string name="help_license">License</string>
+	<!-- The project home title in the help screen. -->
+	<string name="help_project_home">Project Home</string>
+	<!-- The author title in the help screen. -->
+	<string name="help_author">Author</string>
+	<!-- The contributor title in the help screen. -->
+	<string name="help_contributor">Contributor</string>
+	<!-- The message shown when no errors found when checking progress. -->
+	<string name="ProgressOK">没有错误</string>
+	<!-- The message shown when error(s) found when checking progress. -->
+	<string name="ProgressBad">存在错误！！！</string>
+	<!-- The message of the dialog box asking whether to hide operator signs -->
+	<string name="hide_operators_dialog_message">Hide operator signs?</string>
+	<!-- Alert Dialog Yes button text -->
+	<string name="Yes">Yes, I like a challenge</string>
+	<!-- Alert Dialog No button text -->
+	<string name="No">No, keep it simple</string>
+</resources>

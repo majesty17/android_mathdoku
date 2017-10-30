@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\anim\\selectorzoomout.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\anim\\selectorzoomout.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\anim\\solvedanim.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\anim\\solvedanim.xml"
+    },
+    {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\anim\\selectorzoomin.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\anim\\selectorzoomin.xml"
+    }
+]

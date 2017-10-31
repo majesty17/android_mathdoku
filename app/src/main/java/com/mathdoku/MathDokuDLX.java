@@ -41,24 +41,30 @@ public class MathDokuDLX extends DLX {
         //约束值？
         int constraint_num;
         int move_idx = 0;
-        // 去每个围笼里看每个候选解法,AddNode了个什么鸟玩意...?
+        // 去每个围笼里看每个候选解法
         for (GridCage gc : cages)
         {
             ArrayList<int[]> allmoves = gc.getPossibleNums();
             for (int[] onemove : allmoves)
             {
-                //对于其中一个解法
+                //对于其中一个解法，增加约束
+				
+				
                 for (int i = 0; i<gc.mCells.size(); i++) {
+					//约束1：每行、列的数字都得填一遍
                     constraint_num = BOARD*(onemove[i]-1) + gc.mCells.get(i).mColumn + 1;
                     AddNode(constraint_num, move_idx);	// Column constraint
                     constraint_num = BOARD2 + BOARD*(onemove[i]-1) + gc.mCells.get(i).mRow + 1;
                     AddNode(constraint_num, move_idx);	// Row constraint
                 }
                 constraint_num = 2 * BOARD2 + gc.mId + 1;
+				//约束3：每个围笼的计算结果唯一
                 AddNode(constraint_num, move_idx);	// Cage constraint
                 move_idx++;
             }
         }
+		//最终加了几个node？
+		//每个cage的每个解法，有2*cage大小+1个node
     }
 
 }

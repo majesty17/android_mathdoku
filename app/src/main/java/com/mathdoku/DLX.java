@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class DLX extends Object
 {
+	//解决模式:1解,多解,所有解
 	public enum SolveType {ONE, MULTIPLE, ALL};
     private DLXColumn root = new DLXColumn();
     private DLXColumn[] ColHdrs;
@@ -196,11 +197,13 @@ public class DLX extends Object
         return NumSolns;
     }
     
+	//核心递归搜索方法
     private void search(int k)
     {
         DLXColumn chosenCol;
         LL2DNode r, j;
 
+		//如果根右为自己,说明找到一个解
         if (root.GetRight() == root)
         {
         	foundsolution = new ArrayList<Integer>(trysolution);
@@ -240,7 +243,7 @@ public class DLX extends Object
             }
             UncoverCol(chosenCol);
         }
-    return;
+		return;
     }
 
     /**

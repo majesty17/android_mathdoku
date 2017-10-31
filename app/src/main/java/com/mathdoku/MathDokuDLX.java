@@ -35,9 +35,10 @@ public class MathDokuDLX extends DLX {
             total_moves += gc.getPossibleNums().size();
             total_nodes += gc.getPossibleNums().size()*(2*gc.mCells.size()+1);
         }
-        //初始化
+        //初始化 Init(int nc, int nr, int nn)
         Init (2*BOARD2 + cages.size(), total_moves, total_nodes);
 
+        //约束值？
         int constraint_num;
         int move_idx = 0;
         // 去每个围笼里看每个候选解法,AddNode了个什么鸟玩意...?
@@ -46,6 +47,7 @@ public class MathDokuDLX extends DLX {
             ArrayList<int[]> allmoves = gc.getPossibleNums();
             for (int[] onemove : allmoves)
             {
+                //对于其中一个解法
                 for (int i = 0; i<gc.mCells.size(); i++) {
                     constraint_num = BOARD*(onemove[i]-1) + gc.mCells.get(i).mColumn + 1;
                     AddNode(constraint_num, move_idx);	// Column constraint

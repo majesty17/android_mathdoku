@@ -37,18 +37,23 @@ public class DLX extends Object
         Log.d ("MathDoku", "nr : "+nr);
         Log.d ("MathDoku", "nn : "+nn);
 
+        //列数是固定的
         numcols = nc;
+        //初始化所有列
         ColHdrs = new DLXColumn[numcols + 1];
         for (int c = 1; c <= numcols; c++)
             ColHdrs[c] = new DLXColumn();
 
+        //所有节点,先不分配
         Nodes = new DLXNode[nn + 1];
         numnodes = 0;   // None allocated
-
+        //所有行,先不分配
         Rows = new DLXRow[nr + 1];
         numrows = 0;    // None allocated
 
+        //前置列指针
         DLXColumn prev = root;
+        //把前置列跟所有列头穿起来，形成一个大双向链表
         for (int i = 1; i <= numcols; i++)
         {
             prev.SetRight(ColHdrs[i]);
@@ -238,6 +243,9 @@ public class DLX extends Object
     return;
     }
 
+    /**
+     * 基本四向节点,上下左右四个指针
+     */
     public class LL2DNode extends Object
     {
         public void SetLeft(LL2DNode left) { L = left; }
@@ -259,6 +267,11 @@ public class DLX extends Object
         private LL2DNode D;   // Pointer to node below
     }
 
+    /**
+     * DLXNode,指向一个col头,拥有一个row序号
+     * 创建的时候必须制定所属的Col,并给col.size++
+     * 会把自己插入到col头上面
+     */
     public class DLXNode extends LL2DNode
     {
         public DLXNode(DLXColumn col, int ri)
@@ -278,6 +291,9 @@ public class DLX extends Object
         private int RowIdx;     // Index to row
     }
 
+    /**
+     * 这是一个虚拟的row的概念,包含了指向一个DLXNode的指针
+     */
     public class DLXRow
     {
         public DLXRow(DLXNode first)
@@ -288,6 +304,10 @@ public class DLX extends Object
         public DLXNode FirstNode;
     }
 
+
+    /**
+     * DLX列的头结点:初始大小是0,上下连着自己,可增可减
+     */
     public class DLXColumn extends LL2DNode
     {
         private int size;		// Number of items in column

@@ -33,42 +33,52 @@ public final class R {
     public static final class id {
         public static final int aboutVersionCode=0x7f0a0002;
         public static final int aboutscrollview=0x7f0a0000;
-        public static final int allButton=0x7f0a0009;
-        public static final int checkprogress=0x7f0a0019;
-        public static final int clearButton=0x7f0a000a;
-        public static final int controls=0x7f0a0007;
-        public static final int digits=0x7f0a0008;
-        public static final int gameDelete=0x7f0a000e;
-        public static final int gameLoad=0x7f0a000d;
+        public static final int allButton=0x7f0a0012;
+        public static final int btn_cal=0x7f0a000b;
+        public static final int checkBox_ifhassame=0x7f0a0009;
+        public static final int checkprogress=0x7f0a0022;
+        public static final int clearButton=0x7f0a0013;
+        public static final int controls=0x7f0a0010;
+        public static final int digits=0x7f0a0011;
+        public static final int et_gamesize=0x7f0a0006;
+        public static final int et_has=0x7f0a0007;
+        public static final int et_hasno=0x7f0a0008;
+        public static final int et_result=0x7f0a0003;
+        public static final int et_size=0x7f0a0004;
+        public static final int gameDelete=0x7f0a0017;
+        public static final int gameLoad=0x7f0a0016;
         public static final int goalText=0x7f0a0001;
-        public static final int gridView=0x7f0a0005;
-        public static final int help=0x7f0a001b;
-        public static final int newgame=0x7f0a0011;
-        public static final int options=0x7f0a001a;
-        public static final int puzzleGrid=0x7f0a0004;
-        public static final int saveCurrent=0x7f0a0010;
-        public static final int savedGridText=0x7f0a000f;
-        public static final int savedGridView=0x7f0a000c;
-        public static final int saveload=0x7f0a0018;
-        public static final int size4=0x7f0a0012;
-        public static final int size5=0x7f0a0013;
-        public static final int size6=0x7f0a0014;
-        public static final int size7=0x7f0a0015;
-        public static final int size8=0x7f0a0016;
-        public static final int size9=0x7f0a0017;
-        public static final int solvedText=0x7f0a0006;
-        public static final int topLayout=0x7f0a0003;
-        public static final int wordRow=0x7f0a000b;
+        public static final int gridView=0x7f0a000e;
+        public static final int help=0x7f0a0024;
+        public static final int newgame=0x7f0a001a;
+        public static final int options=0x7f0a0023;
+        public static final int puzzleGrid=0x7f0a000d;
+        public static final int saveCurrent=0x7f0a0019;
+        public static final int savedGridText=0x7f0a0018;
+        public static final int savedGridView=0x7f0a0015;
+        public static final int saveload=0x7f0a0021;
+        public static final int size4=0x7f0a001b;
+        public static final int size5=0x7f0a001c;
+        public static final int size6=0x7f0a001d;
+        public static final int size7=0x7f0a001e;
+        public static final int size8=0x7f0a001f;
+        public static final int size9=0x7f0a0020;
+        public static final int solvedText=0x7f0a000f;
+        public static final int spinner_action=0x7f0a0005;
+        public static final int topLayout=0x7f0a000c;
+        public static final int tv_all_result=0x7f0a000a;
+        public static final int wordRow=0x7f0a0014;
     }
     public static final class integer {
         public static final int in_english_visibility=0x7f070000;
     }
     public static final class layout {
         public static final int aboutview=0x7f030000;
-        public static final int changeview=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int savedgameitem=0x7f030003;
-        public static final int savedgamesaveitem=0x7f030004;
+        public static final int activity_helper=0x7f030001;
+        public static final int changeview=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int savedgameitem=0x7f030004;
+        public static final int savedgamesaveitem=0x7f030005;
     }
     public static final class menu {
         public static final int mainmenu=0x7f090000;
@@ -92,9 +102,10 @@ public final class R {
         public static final int context_menu_populate_maybes=0x7f080048;
         public static final int context_menu_reveal_cell=0x7f08000f;
         public static final int context_menu_show_factors=0x7f080049;
+        public static final int context_menu_show_helper=0x7f08004a;
         public static final int context_menu_show_solution=0x7f080010;
         public static final int context_menu_use_cage_maybes=0x7f080011;
-        public static final int factors=0x7f08004a;
+        public static final int factors=0x7f08004b;
         public static final int grid_size_4=0x7f080012;
         public static final int grid_size_5=0x7f080013;
         public static final int grid_size_6=0x7f080014;
@@ -127,8 +138,8 @@ public final class R {
         public static final int option_hide_operators_title=0x7f08002f;
         public static final int option_hide_selector_summary=0x7f080030;
         public static final int option_hide_selector_title=0x7f080031;
-        public static final int option_invalid_maybes_summary=0x7f08004b;
-        public static final int option_invalid_maybes_title=0x7f08004c;
+        public static final int option_invalid_maybes_summary=0x7f08004c;
+        public static final int option_invalid_maybes_title=0x7f08004d;
         public static final int option_mark_bad_maths_summary=0x7f080032;
         public static final int option_mark_bad_maths_title=0x7f080033;
         public static final int option_mark_duplicates_summary=0x7f080034;

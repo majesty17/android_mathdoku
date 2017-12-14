@@ -49,8 +49,7 @@ import android.widget.Toast;
 import android.R.style;
 
 public class MathDoku extends Activity implements OnSharedPreferenceChangeListener,
-                                                  OnTouchListener
-{
+        OnTouchListener {
     public static final String TAG = "MathDoku";
     public static final String savegamename = "savedgame";
     private static final int USE_MAYBES = 101;
@@ -60,6 +59,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     private static final int SHOW_SOLUTION = 105;
     private static final int POPULATE_MAYBES = 106;
     private static final int SHOW_FACTORS = 107;
+    private static final int SHOW_HELPER = 108;
     private static final int LOAD_GAME = 7;
 
     private GridView kenKenGrid;
@@ -84,7 +84,9 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     private String hideOperators = "F";
     private WakeLock wakeLock;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,17 +102,17 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
         ab.setDisplayShowTitleEnabled(true);
         ab.setTitle("MathDoku");
 
-        topLayout = (LinearLayout)findViewById(R.id.topLayout);
-        kenKenGrid = (GridView)findViewById(R.id.gridView);
-        solvedText = (TextView)findViewById(R.id.solvedText);
+        topLayout = (LinearLayout) findViewById(R.id.topLayout);
+        kenKenGrid = (GridView) findViewById(R.id.gridView);
+        solvedText = (TextView) findViewById(R.id.solvedText);
         solvedText.setVisibility(View.GONE);
-        controls = (LinearLayout)findViewById(R.id.controls);
-        numpad = (GridLayout)findViewById(R.id.digits);
-        clearDigit = (Button)findViewById(R.id.clearButton);
-        allDigit = (Button)findViewById(R.id.allButton);
-        for (int i=0;i<9;i++) {
+        controls = (LinearLayout) findViewById(R.id.controls);
+        numpad = (GridLayout) findViewById(R.id.digits);
+        clearDigit = (Button) findViewById(R.id.clearButton);
+        allDigit = (Button) findViewById(R.id.allButton);
+        for (int i = 0; i < 9; i++) {
             digits[i] = new Button(this);
-            digits[i].setText(Integer.toString(i+1));
+            digits[i].setText(Integer.toString(i + 1));
             numpad.addView(digits[i]);
         }
         kenKenGrid.mMathDoku = this;
@@ -128,12 +130,12 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
         kenKenGrid.mDupedigits = preferences.getBoolean("dupedigits", true);
         kenKenGrid.mBadMaths = preferences.getBoolean("badmaths", true);
 
-        sound_effect_views = new View[] { kenKenGrid, digits[0], digits[1],
-            digits[2], digits[3], digits[4], digits[5], digits[6], digits[7], digits[8],
-            clearDigit, allDigit
+        sound_effect_views = new View[]{kenKenGrid, digits[0], digits[1],
+                digits[2], digits[3], digits[4], digits[5], digits[6], digits[7], digits[8],
+                clearDigit, allDigit
         };
 
-        for (int i = 0; i<digits.length; i++) {
+        for (int i = 0; i < digits.length; i++) {
             digits[i].setOnTouchListener(this);
         }
 
@@ -162,7 +164,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     public boolean onTouch(View v, MotionEvent event) {
         // 把按钮上的文字转换成数字
         if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-            int d = Integer.parseInt(((Button)v).getText().toString());
+            int d = Integer.parseInt(((Button) v).getText().toString());
             digitSelected(d);
         }
         return true;
@@ -177,7 +179,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     }
 
     @Override
-    public void onSharedPreferenceChanged (SharedPreferences preferences, String key) {
+    public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
         Log.e(TAG, "Pref changed : key: " + key);
         if (key.equals("maybe3x3")) {
             kenKenGrid.setMaybe3x3(preferences.getBoolean("maybe3x3", true));
@@ -228,9 +230,9 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     }
 
     protected void onActivityResult(int requestCode, int resultCode,
-              Intent data) {
+                                    Intent data) {
         if (requestCode != LOAD_GAME || resultCode != Activity.RESULT_OK)
-          return;
+            return;
         Bundle extras = data.getExtras();
         String filename = extras.getString("filename");
         Log.d("Mathdoku", "Loading game: " + filename);
@@ -260,7 +262,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
      */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
-            ContextMenuInfo menuInfo) {
+                                    ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         boolean showClearCageMaybes = false;
         boolean showUseMaybes = false;
@@ -276,25 +278,29 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
         GridCage cage = kenKenGrid.mCages.get(kenKenGrid.mSelectedCell.mCageId);
 
         menu.add(3, SHOW_SOLUTION, 0, R.string.context_menu_show_solution);
-        menu.add(0, REVEAL_CELL, 0,  R.string.context_menu_reveal_cell);
+        menu.add(0, REVEAL_CELL, 0, R.string.context_menu_reveal_cell);
+        menu.add(0, SHOW_HELPER, 0, R.string.context_menu_show_helper);
         if (showClearCageMaybes)
-            menu.add(1, CLEAR_CAGE, 0,  R.string.context_menu_clear_cage_cells);
+            menu.add(1, CLEAR_CAGE, 0, R.string.context_menu_clear_cage_cells);
         if (showUseMaybes) {
             menu.add(2, USE_MAYBES, 0, R.string.context_menu_use_cage_maybes);
         }
 
-        menu.add(0, CLEAR_GRID, 0,  R.string.context_menu_clear_grid);
+        menu.add(0, CLEAR_GRID, 0, R.string.context_menu_clear_grid);
         menu.add(0, POPULATE_MAYBES, 0, R.string.context_menu_populate_maybes);
+        //如果当前围笼操作为乘法，则出现显示因子菜单
+        /*先屏蔽
         if (cage.mAction == GridCage.ACTION_MULTIPLY) {
             menu.add(0, SHOW_FACTORS, 0, R.string.context_menu_show_factors);
-        }
-        menu.setHeaderTitle(R.string.application_name);
+        }*/
+
+        //menu.setHeaderTitle(R.string.application_name);
 
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        GridCell  selectedCell = kenKenGrid.mSelectedCell;
+        GridCell selectedCell = kenKenGrid.mSelectedCell;
         switch (item.getItemId()) {
             case CLEAR_CAGE:
                 if (selectedCell == null)
@@ -335,12 +341,12 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
                         continue;
                     }
                     cell.mPossibles.clear();
-                    for (int i=1;i<=kenKenGrid.mGridSize; i++) {
+                    for (int i = 1; i <= kenKenGrid.mGridSize; i++) {
                         cell.mPossibles.add(i);
                     }
                 }
                 if (clearInvalids) {
-                    while (kenKenGrid.clearInvalidPossibles() == true);
+                    while (kenKenGrid.clearInvalidPossibles() == true) ;
                 }
                 kenKenGrid.invalidate();
                 break;
@@ -355,7 +361,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
                 }
                 String message = Integer.toString(value) + ": ";
 
-                for (int i=2;i<=kenKenGrid.mGridSize;i++) {
+                for (int i = 2; i <= kenKenGrid.mGridSize; i++) {
                     if (value % i == 0) {
                         message += Integer.toString(i) + " ";
                     }
@@ -367,7 +373,28 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
                 d.show();
                 break;
 
+            case SHOW_HELPER:
+                //需要拿出操作类型，操作数，围笼类型，然后开启helpAty
+                GridCage cage_selected = kenKenGrid.mCages.get(kenKenGrid.mSelectedCell.mCageId);
+                int action = cage_selected.mAction;
+                int result = cage_selected.mResult;
+                int gridtype = cage_selected.mType;
+                int game_size = kenKenGrid.mGridSize;
 
+                Log.d("MathDoku", "mAction is " + action);
+                Log.d("MathDoku", "mResult is " + result);
+                Log.d("MathDoku", "Cage size is " + GridCage.CAGE_COORDS[gridtype].length);
+                Log.d("MathDoku", "Game size is " + game_size);
+                if (action != GridCage.ACTION_NONE) {
+                    //开启act
+                    Intent intent = new Intent(MathDoku.this, HelperActivity.class);
+                    intent.putExtra("mAction", action);
+                    intent.putExtra("mResult", result);
+                    intent.putExtra("mType", gridtype);
+                    intent.putExtra("mGamesize", game_size);
+                    startActivity(intent);
+                }
+                break;
         }
         return super.onContextItemSelected(item);
     }
@@ -376,18 +403,32 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     public boolean onOptionsItemSelected(MenuItem menuItem) {
 
         int menuId = menuItem.getItemId();
-        if (menuId == R.id.size4 ||    menuId == R.id.size5 || 
-                menuId == R.id.size6 ||    menuId == R.id.size7 || 
-                menuId == R.id.size8 ||    menuId == R.id.size9) {
+        if (menuId == R.id.size4 || menuId == R.id.size5 ||
+                menuId == R.id.size6 || menuId == R.id.size7 ||
+                menuId == R.id.size8 || menuId == R.id.size9) {
             final int gridSize;
             switch (menuId) {
-                case R.id.size4: gridSize = 4; break;
-                case R.id.size5: gridSize = 5; break;
-                case R.id.size6: gridSize = 6; break;
-                case R.id.size7: gridSize = 7; break;
-                case R.id.size8: gridSize = 8; break;
-                case R.id.size9: gridSize = 9; break;
-                default: gridSize = 4; break;
+                case R.id.size4:
+                    gridSize = 4;
+                    break;
+                case R.id.size5:
+                    gridSize = 5;
+                    break;
+                case R.id.size6:
+                    gridSize = 6;
+                    break;
+                case R.id.size7:
+                    gridSize = 7;
+                    break;
+                case R.id.size8:
+                    gridSize = 8;
+                    break;
+                case R.id.size9:
+                    gridSize = 9;
+                    break;
+                default:
+                    gridSize = 4;
+                    break;
             }
             if (hideOperators.equals("T")) {
                 startNewGame(gridSize, true);
@@ -399,53 +440,53 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.hide_operators_dialog_message)
-                .setCancelable(false)
-                .setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startNewGame(gridSize, true);
-                    }
-                })
-            .setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    startNewGame(gridSize, false);
-                }
-            });
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startNewGame(gridSize, true);
+                        }
+                    })
+                    .setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startNewGame(gridSize, false);
+                        }
+                    });
             AlertDialog dialog = builder.create();
             dialog.show();
             return true;
-                }
+        }
 
         switch (menuItem.getItemId()) {
-        case R.id.saveload:
-            Intent i = new Intent(this, SavedGameList.class);
-            startActivityForResult(i, LOAD_GAME);
-            return true;
+            case R.id.saveload:
+                Intent i = new Intent(this, SavedGameList.class);
+                startActivityForResult(i, LOAD_GAME);
+                return true;
             case R.id.checkprogress:
-            int textId;
-            if (kenKenGrid.isActive() == false) {
-                return false;
-            }
-            if (kenKenGrid.isSolutionValidSoFar())
-                textId = R.string.ProgressOK;
-            else {
-                textId = R.string.ProgressBad;
-                kenKenGrid.markInvalidChoices();
-            }
-            Toast toast = Toast.makeText(getApplicationContext(),
-                                             textId,
-                                             Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER,0,0);
-            toast.show();
-            return true;
-        case R.id.options:
-            startActivityForResult(new Intent(
-                    this, OptionsActivity.class), 0);
-            return true;
-        case R.id.help:
-            openHelpDialog();
-            return true;
-           default:
-            return super.onOptionsItemSelected(menuItem);
+                int textId;
+                if (kenKenGrid.isActive() == false) {
+                    return false;
+                }
+                if (kenKenGrid.isSolutionValidSoFar())
+                    textId = R.string.ProgressOK;
+                else {
+                    textId = R.string.ProgressBad;
+                    kenKenGrid.markInvalidChoices();
+                }
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        textId,
+                        Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                return true;
+            case R.id.options:
+                startActivityForResult(new Intent(
+                        this, OptionsActivity.class), 0);
+                return true;
+            case R.id.help:
+                openHelpDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
         }
     }
 
@@ -474,7 +515,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
         } else if (value == -1) { //all button
             kenKenGrid.mSelectedCell.clearUserValue();
             kenKenGrid.mSelectedCell.mPossibles.clear();
-            for (int i=1;i<=kenKenGrid.mGridSize; i++) {
+            for (int i = 1; i <= kenKenGrid.mGridSize; i++) {
                 kenKenGrid.mSelectedCell.mPossibles.add(i);
             }
         } else {
@@ -490,7 +531,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
             if (kenKenGrid.mSelectedCell.mPossibles.size() == 1) {
                 kenKenGrid.mSelectedCell.setUserValue(kenKenGrid.mSelectedCell.mPossibles.get(0));
                 if (clearInvalids) {
-                    while (kenKenGrid.clearInvalidPossibles() == true);
+                    while (kenKenGrid.clearInvalidPossibles() == true) ;
                 }
             }
 
@@ -543,8 +584,8 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     //根据棋盘的大小，隐藏掉不必要出现的数字按钮
     public void setButtonVisibility(int gridSize) {
 
-        for (int i=4; i<9; i++)
-            if (i<gridSize)
+        for (int i = 4; i < 9; i++)
+            if (i < gridSize)
                 digits[i].setVisibility(View.VISIBLE);
             else
                 digits[i].setVisibility(View.GONE);
@@ -558,37 +599,37 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
     private void openHelpDialog() {
         LayoutInflater li = LayoutInflater.from(this);
         View view = li.inflate(R.layout.aboutview, null);
-        TextView tv = (TextView)view.findViewById(R.id.aboutVersionCode);
+        TextView tv = (TextView) view.findViewById(R.id.aboutVersionCode);
         tv.setText(getVersionName() + " (revision " + getVersionNumber() + ")");
         new AlertDialog.Builder(this)
-        .setTitle(getResources().getString(R.string.application_name) + " " + getResources().getString(R.string.menu_help))
-        .setIcon(R.drawable.about)
-        .setView(view)
-        .setNeutralButton(R.string.menu_changes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-              openChangesDialog();
-          }
-        })
-        .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int whichButton) {
-          }
-        })
-        .show();
+                .setTitle(getResources().getString(R.string.application_name) + " " + getResources().getString(R.string.menu_help))
+                .setIcon(R.drawable.about)
+                .setView(view)
+                .setNeutralButton(R.string.menu_changes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        openChangesDialog();
+                    }
+                })
+                .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                })
+                .show();
     }
 
     private void openChangesDialog() {
         LayoutInflater li = LayoutInflater.from(this);
         View view = li.inflate(R.layout.changeview, null);
         new AlertDialog.Builder(this)
-            .setTitle(R.string.changelog_title)
-            .setIcon(R.drawable.about)
-            .setView(view)
-            .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    //
-                }
-            })
-      .show();
+                .setTitle(R.string.changelog_title)
+                .setIcon(R.drawable.about)
+                .setView(view)
+                .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //
+                    }
+                })
+                .show();
     }
 
     /***
@@ -596,57 +637,57 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
      */
     private void openClearDialog() {
         new AlertDialog.Builder(this)
-        .setTitle(R.string.context_menu_clear_grid_confirmation_title)
-        .setMessage(R.string.context_menu_clear_grid_confirmation_message)
-        .setIcon(android.R.drawable.ic_dialog_alert)
-        .setNegativeButton(R.string.context_menu_clear_grid_negative_button_label, new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int whichButton) {
-              //
-          }
-        })
-        .setPositiveButton(R.string.context_menu_clear_grid_positive_button_label, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                kenKenGrid.clearUserValues();
-            }
-        })
-        .show();
-      }
+                .setTitle(R.string.context_menu_clear_grid_confirmation_title)
+                .setMessage(R.string.context_menu_clear_grid_confirmation_message)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setNegativeButton(R.string.context_menu_clear_grid_negative_button_label, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //
+                    }
+                })
+                .setPositiveButton(R.string.context_menu_clear_grid_positive_button_label, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        kenKenGrid.clearUserValues();
+                    }
+                })
+                .show();
+    }
 
     public void newVersionCheck(SharedPreferences preferences) {
         int pref_version = preferences.getInt("currentversion", -1);
         Editor prefeditor = preferences.edit();
         int current_version = getVersionNumber();
         if (pref_version == -1 || pref_version != current_version) {
-          prefeditor.putInt("currentversion", current_version);
-          prefeditor.commit();
-          if (pref_version == -1)
-              openHelpDialog();
-          else
-              openChangesDialog();
-          return;
+            prefeditor.putInt("currentversion", current_version);
+            prefeditor.commit();
+            if (pref_version == -1)
+                openHelpDialog();
+            else
+                openChangesDialog();
+            return;
         }
     }
 
     public int getVersionNumber() {
         int version = -1;
-          try {
-              PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
-              version = pi.versionCode;
-          } catch (Exception e) {
-              Log.e("Mathdoku", "Package name not found", e);
-          }
-          return version;
-      }
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+            version = pi.versionCode;
+        } catch (Exception e) {
+            Log.e("Mathdoku", "Package name not found", e);
+        }
+        return version;
+    }
 
     public String getVersionName() {
         String versionname = "";
-          try {
-              PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
-              versionname = pi.versionName;
-          } catch (Exception e) {
-              Log.e("Mathdoku", "Package name not found", e);
-          }
-          return versionname;
-      }
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionname = pi.versionName;
+        } catch (Exception e) {
+            Log.e("Mathdoku", "Package name not found", e);
+        }
+        return versionname;
+    }
 }

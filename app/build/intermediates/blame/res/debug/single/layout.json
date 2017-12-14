@@ -8,6 +8,10 @@
         "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\changeview.xml"
     },
     {
+        "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_helper.xml",
+        "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\activity_helper.xml"
+    },
+    {
         "merged": "E:\\git\\android_mathdoku\\app\\build\\intermediates\\res\\merged\\debug\\layout\\savedgamesaveitem.xml",
         "source": "E:\\git\\android_mathdoku\\app\\src\\main\\res\\layout\\savedgamesaveitem.xml"
     },

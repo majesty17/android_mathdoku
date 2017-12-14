@@ -37,8 +37,9 @@
     <string name="context_menu_clear_grid_negative_button_label">不</string>
     <string name="context_menu_clear_grid_positive_button_label">是的，我想重来</string>
     <string name="context_menu_populate_maybes">显示所有候选数</string>
-    <string name="context_menu_reveal_cell">显示答案</string>
+    <string name="context_menu_reveal_cell">显示此格答案</string>
     <string name="context_menu_show_factors">显示因子</string>
+    <string name="context_menu_show_helper">显示辅助...</string>
     <string name="context_menu_show_solution">显示所有答案</string>
     <string name="context_menu_use_cage_maybes">Use cage \"Maybe\"s</string>
     <string name="factors">因子</string>

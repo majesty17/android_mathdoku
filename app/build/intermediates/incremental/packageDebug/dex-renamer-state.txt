@@ -1,0 +1,7 @@
+#Thu Dec 14 19:09:47 CST 2017
+base.0=E\:\\git\\android_mathdoku\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3332269aa29ae3e7bbae6c8d792ddfa47d39ad36
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=E\:\\git\\android_mathdoku\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_dc8b0f0c94c504ee109e3eae4e9cac66f2dc8870\\classes.dex
+base.1=E\:\\git\\android_mathdoku\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_dc8b0f0c94c504ee109e3eae4e9cac66f2dc8870
+file.0=E\:\\git\\android_mathdoku\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_3332269aa29ae3e7bbae6c8d792ddfa47d39ad36\\classes.dex

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="35px"
+    android:layout_margin="30px"
+    android:padding="10px"
     android:gravity="center_horizontal"
     tools:context="com.mathdoku.HelperActivity">
 
@@ -141,6 +142,8 @@
         android:id="@+id/tv_all_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="70px"
         android:text="TextView" />
 
     <Button

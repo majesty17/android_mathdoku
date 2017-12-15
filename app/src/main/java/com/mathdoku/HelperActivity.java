@@ -147,28 +147,18 @@ public class HelperActivity extends Activity implements View.OnClickListener {
         }
 
 
-        //2，用后三者来过滤:TODO ：二连重复的暂时干不掉 例如 1122
-        //2.1 把不允许重复的时候，重复的干掉
-        if (hassame == false) {
-            for (int i = list.size() - 1; i >= 0; i--) {
-                String str = list.get(i);
-                for (int j = 0; j < str.length() - 1; j++) {
-                    if (str.charAt(j) == str.charAt(j + 1)) {
-                        list.remove(i);
-                        break;
-                    }
-                }
-            }
-        }
-        //2.2 三连干掉
+        //2，用后三者来过滤
+        //2.1 干掉超过2个连续一样的，根据是否可以一样确定是否删除一个一样的
         for (int i = list.size() - 1; i >= 0; i--) {
             String str = list.get(i);
-            for (int j = 0; j < str.length() - 2; j++) {
-                if (str.charAt(j) == str.charAt(j + 1) && str.charAt(j) == str.charAt(j + 2)) {
-                    list.remove(i);
-                    break;
+            int same_count = 0;
+            for (int j = 0; j < str.length() - 1; j++) {
+                if (str.charAt(j) == str.charAt(j + 1)) {
+                    same_count++;
                 }
             }
+            if (same_count >= 2 || (same_count==1 && hassame==false))
+                list.remove(i);
         }
 
         //2.3 处理has&hasno

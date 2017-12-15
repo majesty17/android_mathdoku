@@ -178,6 +178,35 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
         digitSelected(-1);
     }
 
+    public void onHelper(View view) {
+        if (kenKenGrid.mSelectedCell == null) {
+            Toast.makeText(this, "请选中单元格", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        GridCage cage_selected = kenKenGrid.mCages.get(kenKenGrid.mSelectedCell.mCageId);
+        int action = cage_selected.mAction;
+        int result = cage_selected.mResult;
+        int gridtype = cage_selected.mType;
+        int game_size = kenKenGrid.mGridSize;
+
+        Log.d("MathDoku", "mAction is " + action);
+        Log.d("MathDoku", "mResult is " + result);
+        Log.d("MathDoku", "Cage size is " + GridCage.CAGE_COORDS[gridtype].length);
+        Log.d("MathDoku", "Game size is " + game_size);
+        if (action != GridCage.ACTION_NONE) {
+            //开启act
+            Intent intent = new Intent(MathDoku.this, HelperActivity.class);
+            intent.putExtra("mAction", action);
+            intent.putExtra("mResult", result);
+            intent.putExtra("mType", gridtype);
+            intent.putExtra("mGamesize", game_size);
+            startActivity(intent);
+        }
+
+    }
+
     @Override
     public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
         Log.e(TAG, "Pref changed : key: " + key);
@@ -374,26 +403,7 @@ public class MathDoku extends Activity implements OnSharedPreferenceChangeListen
                 break;
 
             case SHOW_HELPER:
-                //需要拿出操作类型，操作数，围笼类型，然后开启helpAty
-                GridCage cage_selected = kenKenGrid.mCages.get(kenKenGrid.mSelectedCell.mCageId);
-                int action = cage_selected.mAction;
-                int result = cage_selected.mResult;
-                int gridtype = cage_selected.mType;
-                int game_size = kenKenGrid.mGridSize;
-
-                Log.d("MathDoku", "mAction is " + action);
-                Log.d("MathDoku", "mResult is " + result);
-                Log.d("MathDoku", "Cage size is " + GridCage.CAGE_COORDS[gridtype].length);
-                Log.d("MathDoku", "Game size is " + game_size);
-                if (action != GridCage.ACTION_NONE) {
-                    //开启act
-                    Intent intent = new Intent(MathDoku.this, HelperActivity.class);
-                    intent.putExtra("mAction", action);
-                    intent.putExtra("mResult", result);
-                    intent.putExtra("mType", gridtype);
-                    intent.putExtra("mGamesize", game_size);
-                    startActivity(intent);
-                }
+                onHelper(item.getActionView());
                 break;
         }
         return super.onContextItemSelected(item);

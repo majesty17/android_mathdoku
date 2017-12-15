@@ -77,6 +77,15 @@
 			android:text="@string/main_ui_clear"
             android:onClick="onClear"
 		/>
+		<Button android:id="@+id/helperButton"
+			android:layout_width="70dp"
+			android:layout_height="wrap_content"
+			android:textSize="16dp"
+			android:textStyle="bold"
+			android:layout_gravity="right"
+			android:text="辅助"
+			android:onClick="onHelper"
+			/>
 	</LinearLayout>
 </LinearLayout>
 
